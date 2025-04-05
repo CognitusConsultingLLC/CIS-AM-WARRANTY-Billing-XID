@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns:ui="sap.suite.ui.commons" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:sfi="sap.ui.comp.smartfield" xmlns:sfo="sap.ui.comp.smartform" xmlns:table="sap.ui.table"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1" xmlns:uxap="sap.uxap" xmlns="sap.m">
+		<Panel>
+   <ui:ProcessFlow id="ProcessFlow" class="processFlow" lanes="{HeaderData>/lanes}" nodes="{HeaderData>/PNodes}" 
+			foldedCorners="true" > 
+   <ui:nodes >
+				<ui:ProcessFlowNode 
+					laneId="{HeaderData>laneId}"
+					nodeId="{HeaderData>id}"
+					state="{HeaderData>state}"
+					title = "{HeaderData>atexts}"
+					type = "Single"
+					stateText = "{HeaderData>text}"
+					texts= "{HeaderData>alastChanged}"
+					children="{HeaderData>children}"
+				 />
+			</ui:nodes>
+    <ui:lanes>
+        <ui:ProcessFlowLaneHeader iconSrc="sap-icon://status-completed" text="{HeaderData>text}"  laneId="{HeaderData>id}"
+                      position="{HeaderData>position}" value="100%" />
+    </ui:lanes>
+</ui:ProcessFlow>
+			</Panel>
+</core:FragmentDefinition>

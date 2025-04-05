@@ -1,0 +1,249 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "cgam.warrantymngmt",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.17.1",
+      "toolsId": "7ae50454-914e-4e3d-8e30-7bd21db366d9"
+    },
+    "dataSources": {
+      "CGAM_UI_WARRANTYMNGMT_HDR_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='%2FCGAM%2FUI_WARRANTYMNGMT_HDR_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService//CGAM/UI_WARRANTYMNGMT_HDR_VAN.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "CV_ATTACHMENT_SRV": {
+        "uri": "/sap/opu/odata/sap/CV_ATTACHMENT_SRV/",
+        "type": "OData",
+        "settings": {
+            "localUri": "localService/CV_ATTACHMENT_SRV/metadata.xml"
+        }
+    },
+      "mainService": {
+        "uri": "/sap/opu/odata/cgam/UI_WARRANTYMNGMT_HDR/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "CGAM_UI_WARRANTYMNGMT_HDR_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "cgamwarranty-manage": {
+          "semanticObject": "cgamwarranty",
+          "action": "manage",
+          "title": "{{cgamwarranty-manage.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.25",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "cgam.warrantymngmt.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "customerImageModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {},
+        "preload": false
+    },
+    "AttachmentModel": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+            "defaultOperationMode": "Server",
+            "defaultBindingMode": "OneWay",
+            "defaultCountMode": "Request"
+        },
+        "dataSource": "CV_ATTACHMENT_SRV",
+        "preload": true
+    },
+    "extends": {
+      "extensions": {
+          "sap.ui.viewExtensions": {
+              "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                  "NoImageExtensionFacet|xCGAMxC_WARRANTYMANGEMENT_HDR": {
+                      "type": "XML",
+                      "className": "sap.ui.core.Fragment",
+                      "fragmentName": "cgam.warrantymngmt.ext.fragment.CustomerImage",
+                      "sap.ui.generic.app": {
+                          "title": "{@i18n>CustomerImage}"
+                      }
+                  },
+                  "AfterFacet|xCGAMxC_WARRANTYMANGEMENT_HDR|Condition": {
+                      "type": "XML",
+                      "className": "sap.ui.core.Fragment",
+                      "fragmentName": "cgam.warrantymngmt.ext.fragment.StatusOverview",
+                      "sap.ui.generic.app": {
+                          "title": "{@i18n>Status Overview}"
+                      }
+                  }
+              }
+          },
+          "sap.ui.controllerExtensions": {
+              "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                  "controllerName": "cgam.warrantymngmt.ext.controller.ObjectPageExt",
+                  "sap.ui.generic.app": {
+                      "xCGAMxC_WARRANTYMANGEMENT_HDR": {
+                          "EntitySet": "xCGAMxC_WARRANTYMANGEMENT_HDR",
+                          "Sections": {
+                              "Condition": {
+                                  "id": "Condition",
+                                  "Actions": {
+                                      "ActionxCGDCxC_ContractManagement_HDSections2": {
+                                          "id": "ActionxCGDCxC_ContractManagement_HDSections1button2",
+                                          "text": "{@i18n>ActionxCGDCxC_ContractManagement_HDSections2}",
+                                          "press": "onNavigateToPricingApp"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    }
+  },
+  "sap.ui.generic.app": {
+    "_version": "1.3.0",
+    "settings": {
+      "forceGlobalRefresh": false,
+      "objectPageHeaderType": "Dynamic",
+      "considerAnalyticalParameters": true,
+      "showDraftToggle": false
+    },
+    "pages": {
+      "ListReport|xCGAMxC_WARRANTYMANGEMENT_HDR": {
+        "entitySet": "xCGAMxC_WARRANTYMANGEMENT_HDR",
+        "component": {
+          "name": "sap.suite.ui.generic.template.ListReport",
+          "list": true,
+          "settings": {
+            "condensedTableLayout": true,
+            "smartVariantManagement": true,
+            "enableTableFilterInPageVariant": true,
+            "filterSettings": {
+              "dateSettings": {
+                "useDateRange": true
+              }
+            },
+            "tableSettings": {
+              "type": "ResponsiveTable"
+            }
+          }
+        },
+        "pages": {
+          "ObjectPage|xCGAMxC_WARRANTYMANGEMENT_HDR": {
+            "entitySet": "xCGAMxC_WARRANTYMANGEMENT_HDR",
+            "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+            "component": {
+              "name": "sap.suite.ui.generic.template.ObjectPage"
+            },
+            "pages": {
+              "ObjectPage|to_SN": {
+                "navigationProperty": "to_SN",
+                "entitySet": "xCGAMxI_SN_WRT_LIST",
+                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns:sample="sap.uxap.sample.ObjectPageSubSectionSized.controller.blocks" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<!--<Avatar displaySize="XL"-->
+	<!--						src="/sap/opu/odata/sap/CV_ATTACHMENT_SRV/OriginalContentSet(Documenttype='{customerImageModel>/results/Documenttype}',Documentnumber='{customerImageModel>/results/Documentnumber}',Documentpart='',Documentversion='',ApplicationId='{customerImageModel>/results/ApplicationId}',FileId='{customerImageModel>/results/FileId}')/$value"-->
+	<!--						class="sapUiTinyMarginEnd"/>-->
+		<Avatar id="idAvatar" src="" backgroundColor="Random" class="sapUiTinyMarginEnd" displaySize="XL"/>
+</core:FragmentDefinition>

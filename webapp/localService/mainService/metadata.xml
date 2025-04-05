@@ -1,0 +1,1174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://xid-dev:8200/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_xcgamxui_warrantymngmt_hdr" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="xCGAMxC_WARRANTYMANGEMENT_HDRType" sap:label="CISAM - Warranty Header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="wrty_no"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Crtd_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="doc_type_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="wrty_edit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="wrty_no" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+                <Property Name="wrty_edit" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:field-control="wrty_edit_fc" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+                <Property Name="wrty_txt" Type="Edm.String" MaxLength="40" sap:label="Text" sap:quickinfo="Text, Length 40"/>
+                <Property Name="doc_type" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="doc_type_fc" sap:label="Document Type" sap:quickinfo="CISAM - Warranty Dococument type"/>
+                <Property Name="DocDesc" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="CIS-AM: Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="doc_catg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:text="DocCatDesc" sap:label="Document Category" sap:quickinfo="CISAM - Warranty Mangement Category" sap:updatable="false"/>
+                <Property Name="DocCatDesc" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="sales_org" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="distrib_channel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="wrt_gaart" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Warranty type"/>
+                <Property Name="customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerFullName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Customer Name" sap:quickinfo="Customer Full Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="resrv_amt" Type="Edm.Decimal" Precision="17" Scale="4" sap:label="Reserve Amount" sap:quickinfo="CIS-AM : Warranty Reserve Amount"/>
+                <Property Name="date_from" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid From" sap:quickinfo="Valid-From Date"/>
+                <Property Name="date_to" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid To" sap:quickinfo="Valid To Date"/>
+                <Property Name="external_wrty" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="ExtWarrantyNumber" sap:quickinfo="External warranty number"/>
+                <Property Name="sort_field" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Warranty sort field"/>
+                <Property Name="wrty_grp" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="WarrantyGroup" sap:quickinfo="Warranty group"/>
+                <Property Name="created_on" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Creation Date"/>
+                <Property Name="created_at" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="created_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
+                <Property Name="changed_on" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Changed On"/>
+                <Property Name="changed_at" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="changed_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
+                <Property Name="auth_grp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+                <Property Name="delet_ind" Type="Edm.Boolean" sap:label="Deletion Indicator"/>
+                <Property Name="Pmprf" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Price Mnt. Profile" sap:quickinfo="CIS-AR: Price Maintenance Profile"/>
+                <Property Name="Stsma" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Status Profile"/>
+                <Property Name="objnr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="partner_det_prcd" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="PartnerDetermProced." sap:quickinfo="Partner Determination Procedure"/>
+                <Property Name="wrty_type" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="Ktext" sap:label="Warranty type" sap:updatable="false"/>
+                <Property Name="Ktext" Type="Edm.String" MaxLength="40" sap:label="Text" sap:quickinfo="Text, Length 40" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="lange_crt" Type="Edm.String" MaxLength="2" sap:label="Language (creation)" sap:quickinfo="Language key for creation"/>
+                <Property Name="pass_wrty" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Pass on warrnty" sap:quickinfo="Indicator: Pass on Warranty"/>
+                <Property Name="wrty_item" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Item Link" sap:quickinfo="Relational Operator: Warranty Item"/>
+                <Property Name="last_changed_on" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_6AD4B874CA833EC25AD644B06921605E" FromRole="FromRole_assoc_6AD4B874CA833EC25AD644B06921605E" ToRole="ToRole_assoc_6AD4B874CA833EC25AD644B06921605E"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_7BB9752465669E0CC425B08E6D085C97" FromRole="FromRole_assoc_7BB9752465669E0CC425B08E6D085C97" ToRole="ToRole_assoc_7BB9752465669E0CC425B08E6D085C97"/>
+                <NavigationProperty Name="to_BILL" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_81AF5E496F2300478E2971EE92C9A722" FromRole="FromRole_assoc_81AF5E496F2300478E2971EE92C9A722" ToRole="ToRole_assoc_81AF5E496F2300478E2971EE92C9A722"/>
+                <NavigationProperty Name="to_COND_CAT_OV" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_FDE9ADE39C2AD8B556A38C1A9617B02B" FromRole="FromRole_assoc_FDE9ADE39C2AD8B556A38C1A9617B02B" ToRole="ToRole_assoc_FDE9ADE39C2AD8B556A38C1A9617B02B"/>
+                <NavigationProperty Name="to_SN" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_595B901FAF1892E51EDB84BFAA5900D1" FromRole="FromRole_assoc_595B901FAF1892E51EDB84BFAA5900D1" ToRole="ToRole_assoc_595B901FAF1892E51EDB84BFAA5900D1"/>
+                <NavigationProperty Name="to_WRT_TEXT" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_4CDD58330B3729F279F710BB3F6ADD49" FromRole="FromRole_assoc_4CDD58330B3729F279F710BB3F6ADD49" ToRole="ToRole_assoc_4CDD58330B3729F279F710BB3F6ADD49"/>
+            </EntityType>
+            <EntityType Name="xCGAMxC_WRTY_TXTType" sap:label="CISAM - Warranty Texts" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="wrty_no"/>
+                    <PropertyRef Name="Tdobject"/>
+                    <PropertyRef Name="Txtob"/>
+                    <PropertyRef Name="Txtgr"/>
+                    <PropertyRef Name="Tdid"/>
+                    <PropertyRef Name="Lfdtx"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="TextSave1_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="wrty_no" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Tdobject" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Text object" sap:quickinfo="Texts: application object" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Txtob" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Group for" sap:quickinfo="Object for which the text group is created" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Txtgr" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="TextDetermProcedure" sap:quickinfo="Text Determination Procedure" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Tdid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Text ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Lfdtx" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="SeqNo-text ID group" sap:quickinfo="Sequential number of text ID group" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Redup" Type="Edm.Boolean" sap:label="Reference/duplicate" sap:quickinfo="Reference/duplication indicator for copying texts"/>
+                <Property Name="Fehgr" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Incompl.Proced." sap:quickinfo="Incompleteness Procedure for Sales Document"/>
+                <Property Name="Txpfl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Mandatory/display" sap:quickinfo="Text is mandatory or should be displayed"/>
+                <Property Name="Txzuf" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Access sequence" sap:quickinfo="Access sequence for word processing in sales and distibution"/>
+                <Property Name="updateTxt1" Type="Edm.String" MaxLength="1333" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="updateTxt" Type="Edm.String" MaxLength="1333"/>
+                <Property Name="Tdinclid" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="INCLUDE ID" sap:quickinfo="Default ID for texts to be included"/>
+                <Property Name="Tdinclres" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Copy INCLUDE" sap:quickinfo="Expand INCLUDE"/>
+                <Property Name="Tdobligat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Text is mandatory" sap:quickinfo="Text contents are mandatory"/>
+                <Property Name="Tddelprot" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Deletion protection"/>
+                <Property Name="Tdshowname" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Display names" sap:quickinfo="Display text name in editor header" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Tdtexttype" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Text format" sap:quickinfo="SAPscript: Format of Text"/>
+                <Property Name="Tdkeystruc" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Structure of key" sap:quickinfo="SAPscript: Structure name for key structure"/>
+                <Property Name="HandlerClass" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Persistence Handler" sap:quickinfo="Name of the Persistence Handler Class"/>
+                <Property Name="tdspras" Type="Edm.String" MaxLength="2" sap:label="Language Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="tdtext" Type="Edm.String" MaxLength="30" sap:label="Description" sap:quickinfo="Short text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_wrtHDR" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_4CDD58330B3729F279F710BB3F6ADD49" FromRole="ToRole_assoc_4CDD58330B3729F279F710BB3F6ADD49" ToRole="FromRole_assoc_4CDD58330B3729F279F710BB3F6ADD49"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_82FEBEF0340E0AB946A2A166A5E44ECF" FromRole="FromRole_assoc_82FEBEF0340E0AB946A2A166A5E44ECF" ToRole="ToRole_assoc_82FEBEF0340E0AB946A2A166A5E44ECF"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_xcgamxui_warrantymngmt_hdr.assoc_9049EFABA7DA5A17CBE99387C271EE05" FromRole="FromRole_assoc_9049EFABA7DA5A17CBE99387C271EE05" ToRole="ToRole_assoc_9049EFABA7DA5A17CBE99387C271EE05"/>
+            </EntityType>
+            <EntityType Name="xCGAMxI_BILL_WRT_LISTType" sap:label="CISAM - Billing doc Warraties" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="vbeln"/>
+                    <PropertyRef Name="Doccat"/>
+                </Key>
+                <Property Name="vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Billing Document"/>
+                <Property Name="Doccat" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Document Category" sap:quickinfo="CISAM: Document Category"/>
+                <Property Name="bill_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Billing Date"/>
+                <Property Name="customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Payer"/>
+                <Property Name="matnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="netwr" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="waerk" sap:variable-scale="true" sap:label="Net Value" sap:quickinfo="Net Value of Billing item in Document Currency"/>
+                <Property Name="waerk" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="Mganr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+                <Property Name="Exganr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+                <Property Name="Adganr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+            </EntityType>
+            <EntityType Name="xCGAMxI_SN_WRT_LISTType" sap:label="CISAM - Notifications for Warranty" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="qmnum"/>
+                    <PropertyRef Name="Doccat"/>
+                </Key>
+                <Property Name="qmnum" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Notification" sap:quickinfo="Notification Number"/>
+                <Property Name="Doccat" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Document Category" sap:quickinfo="CISAM: Document Category"/>
+                <Property Name="qmtxt" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Short Text"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="serialnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Serial Number"/>
+                <Property Name="kdmat" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Customer Material" sap:quickinfo="Material Number Used by Customer"/>
+                <Property Name="idnlf" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Supplier Mat. No." sap:quickinfo="Material Number Used by Supplier"/>
+                <Property Name="Mganr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+                <Property Name="Exganr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+                <Property Name="Adganr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+            </EntityType>
+            <EntityType Name="xCGAMxI_WrtyStatusType" sap:label="Warranty Status View" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocType"/>
+                    <PropertyRef Name="Stsma"/>
+                    <PropertyRef Name="estat"/>
+                    <PropertyRef Name="chgnr"/>
+                </Key>
+                <Property Name="DocType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Document Type" sap:quickinfo="CISAM - Warranty Dococument type"/>
+                <Property Name="Stsma" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:label="Status Profile"/>
+                <Property Name="estat" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="User Status"/>
+                <Property Name="chgnr" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Change number"/>
+                <Property Name="usnam" Type="Edm.String" MaxLength="81"/>
+                <Property Name="udate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Creation Date of Change Document"/>
+                <Property Name="utime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="Time of Change"/>
+                <Property Name="tcode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Transaction code"/>
+                <Property Name="objnr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="stonr" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Status Number" sap:quickinfo="Status Order Number"/>
+                <Property Name="txt04" Type="Edm.String" MaxLength="4" sap:label="Status" sap:quickinfo="Individual status of an object (short form)"/>
+                <Property Name="txt30" Type="Edm.String" MaxLength="30" sap:label="Status" sap:quickinfo="Individual Status of an Object"/>
+            </EntityType>
+            <EntityType Name="xCGAMxI_WRTY_COND_CATType" sap:label="CISAM - Warranty Condition summary" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocumentType"/>
+                    <PropertyRef Name="PriceMaintProfile"/>
+                    <PropertyRef Name="Category"/>
+                    <PropertyRef Name="SubCategory"/>
+                    <PropertyRef Name="ConditionType"/>
+                    <PropertyRef Name="ConditionTable"/>
+                </Key>
+                <Property Name="DocumentType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Document Type" sap:quickinfo="CISAM - Warranty Dococument type"/>
+                <Property Name="PriceMaintProfile" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Price Mnt. Profile" sap:quickinfo="CIS-AR: Price Maintenance Profile"/>
+                <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="CategoryDesc" sap:label="Category" sap:quickinfo="CIS-AD: Category"/>
+                <Property Name="SubCategory" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="SubCategoryDesc" sap:label="Sub Category" sap:quickinfo="CIS-AD: Sub Category"/>
+                <Property Name="ConditionType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="ConditionTypeDesc" sap:label="Condition Type" sap:quickinfo="CIS-AD: Condition type"/>
+                <Property Name="ConditionTable" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="ConditionTableDesc" sap:label="Condition Table" sap:quickinfo="CIS-AD: Condition Table"/>
+                <Property Name="Descr" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="CIS-AD: Price Maintenance Profile Description"/>
+                <Property Name="CategoryDesc" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="CIS-AD: Price Maintenance Profile Description"/>
+                <Property Name="SubCategoryDesc" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="CIS-AD: Price Maintenance Profile Description"/>
+                <Property Name="ConditionTypeDesc" Type="Edm.String" MaxLength="20" sap:label="Name"/>
+                <Property Name="ConditionTableDesc" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Description of Repository Objects"/>
+                <Property Name="wrty_no" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
+                <Property Name="RecordCount" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Cond. Record Count" sap:quickinfo="CIS-AD: Condition Record Count" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="xCGDCxC_TJ30Type" sap:label="User Status Projection view" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Stsma"/>
+                    <PropertyRef Name="Stonr"/>
+                    <PropertyRef Name="Estat"/>
+                </Key>
+                <Property Name="Stsma" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:label="Status Profile"/>
+                <Property Name="Stonr" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:label="Status Number" sap:quickinfo="Status Order Number"/>
+                <Property Name="Estat" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="Txt30" sap:label="User Status"/>
+                <Property Name="Txt04" Type="Edm.String" MaxLength="4" sap:label="Status" sap:quickinfo="Individual status of an object (short form)"/>
+                <Property Name="Txt30" Type="Edm.String" MaxLength="30" sap:label="Text" sap:quickinfo="Individual Status of an Object"/>
+            </EntityType>
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By" sap:value-list="standard"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By" sap:value-list="standard"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="I_DraftAdministrativeUserVHType" sap:label="Draft User" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description"/>
+            </EntityType>
+            <EntityType Name="SAP__Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CurrencyCode"/>
+                </Key>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Short text"/>
+                <Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Decimals"/>
+            </EntityType>
+            <EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitCode"/>
+                </Key>
+                <Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:semantics="unit-of-measure"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO Code"/>
+                <Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Commercial"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Meas. Unit Text"/>
+                <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
+            </EntityType>
+            <EntityType Name="SAP__DocumentDescription" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <NavigationProperty Name="Format" Relationship="cds_xcgamxui_warrantymngmt_hdr.to_format" FromRole="FromRole_to_format" ToRole="ToRole_to_format"/>
+                <NavigationProperty Name="TableColumns" Relationship="cds_xcgamxui_warrantymngmt_hdr.to_tablecolumns" FromRole="FromRole_to_tablecolumns" ToRole="ToRole_to_tablecolumns"/>
+                <NavigationProperty Name="CoverPage" Relationship="cds_xcgamxui_warrantymngmt_hdr.to_coverpage" FromRole="FromRole_to_coverpage" ToRole="ToRole_to_coverpage"/>
+                <NavigationProperty Name="Signature" Relationship="cds_xcgamxui_warrantymngmt_hdr.to_signature" FromRole="FromRole_to_signature" ToRole="ToRole_to_signature"/>
+                <NavigationProperty Name="PDFStandard" Relationship="cds_xcgamxui_warrantymngmt_hdr.to_pdfstandard" FromRole="FromRole_to_pdfstandard" ToRole="ToRole_to_pdfstandard"/>
+                <NavigationProperty Name="Hierarchy" Relationship="cds_xcgamxui_warrantymngmt_hdr.to_Hierarchy" FromRole="FromRole_to_Hierarchy" ToRole="ToRole_to_Hierarchy"/>
+                <NavigationProperty Name="Header" Relationship="cds_xcgamxui_warrantymngmt_hdr.to_header" FromRole="FromRole_to_header" ToRole="ToRole_to_header"/>
+                <NavigationProperty Name="Footer" Relationship="cds_xcgamxui_warrantymngmt_hdr.to_Footer" FromRole="FromRole_to_Footer" ToRole="ToRole_to_Footer"/>
+            </EntityType>
+            <EntityType Name="SAP__Format" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="FitToPage" Type="cds_xcgamxui_warrantymngmt_hdr.SAP__FitToPage" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orientation" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaperSize" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BorderSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MarginSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontName" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Font Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Padding" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFStandard" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UsePDFAConformance" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoEnableAccessibility" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__TableColumns" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                    <PropertyRef Name="Header"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Header" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HorizontalAlignment" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__CoverPage" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Title"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                </Key>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__Signature" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoSign" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reason" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__Hierarchy" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DistanceFromRootElement" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DrillStateElement" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Right" Type="cds_xcgamxui_warrantymngmt_hdr.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Left" Type="cds_xcgamxui_warrantymngmt_hdr.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Center" Type="cds_xcgamxui_warrantymngmt_hdr.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFFooter" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Right" Type="cds_xcgamxui_warrantymngmt_hdr.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Left" Type="cds_xcgamxui_warrantymngmt_hdr.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Center" Type="cds_xcgamxui_warrantymngmt_hdr.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__ValueHelp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="VALUEHELP"/>
+                </Key>
+                <Property Name="VALUEHELP" Type="Edm.String" Nullable="false"/>
+                <Property Name="FIELD_VALUE" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="DESCRIPTION" Type="Edm.String"/>
+            </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
+            <ComplexType Name="SAP__FitToPage">
+                <Property Name="ErrorRecoveryBehavior" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Error behavior" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsEnabled" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MinimumFontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <ComplexType Name="SAP__HeaderFooterField">
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="assoc_7BB9752465669E0CC425B08E6D085C97" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" Multiplicity="1" Role="FromRole_assoc_7BB9752465669E0CC425B08E6D085C97"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" Multiplicity="0..1" Role="ToRole_assoc_7BB9752465669E0CC425B08E6D085C97"/>
+            </Association>
+            <Association Name="assoc_81AF5E496F2300478E2971EE92C9A722" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" Multiplicity="1" Role="FromRole_assoc_81AF5E496F2300478E2971EE92C9A722"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_BILL_WRT_LISTType" Multiplicity="*" Role="ToRole_assoc_81AF5E496F2300478E2971EE92C9A722"/>
+            </Association>
+            <Association Name="assoc_FDE9ADE39C2AD8B556A38C1A9617B02B" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" Multiplicity="1" Role="FromRole_assoc_FDE9ADE39C2AD8B556A38C1A9617B02B"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_WRTY_COND_CATType" Multiplicity="*" Role="ToRole_assoc_FDE9ADE39C2AD8B556A38C1A9617B02B"/>
+            </Association>
+            <Association Name="assoc_595B901FAF1892E51EDB84BFAA5900D1" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" Multiplicity="1" Role="FromRole_assoc_595B901FAF1892E51EDB84BFAA5900D1"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_SN_WRT_LISTType" Multiplicity="*" Role="ToRole_assoc_595B901FAF1892E51EDB84BFAA5900D1"/>
+            </Association>
+            <Association Name="assoc_4CDD58330B3729F279F710BB3F6ADD49" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" Multiplicity="1" Role="FromRole_assoc_4CDD58330B3729F279F710BB3F6ADD49">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WRTY_TXTType" Multiplicity="*" Role="ToRole_assoc_4CDD58330B3729F279F710BB3F6ADD49"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_4CDD58330B3729F279F710BB3F6ADD49">
+                        <PropertyRef Name="wrty_no"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_4CDD58330B3729F279F710BB3F6ADD49">
+                        <PropertyRef Name="wrty_no"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_6AD4B874CA833EC25AD644B06921605E" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" Multiplicity="1" Role="FromRole_assoc_6AD4B874CA833EC25AD644B06921605E"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_6AD4B874CA833EC25AD644B06921605E"/>
+            </Association>
+            <Association Name="to_format" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_format"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__Format" Multiplicity="1" Role="ToRole_to_format"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_tablecolumns" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_tablecolumns"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__TableColumns" Multiplicity="*" Role="ToRole_to_tablecolumns"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_coverpage" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_coverpage"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__CoverPage" Multiplicity="*" Role="ToRole_to_coverpage"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_signature" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_signature"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__Signature" Multiplicity="1" Role="ToRole_to_signature"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_pdfstandard" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_pdfstandard"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFStandard" Multiplicity="1" Role="ToRole_to_pdfstandard"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_pdfstandard">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_pdfstandard">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_Hierarchy" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Hierarchy"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__Hierarchy" Multiplicity="1" Role="ToRole_to_Hierarchy"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_Hierarchy">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_Hierarchy">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_header" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_header"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFHeader" Multiplicity="1" Role="ToRole_to_header"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_header">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_header">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_Footer" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Footer"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFFooter" Multiplicity="1" Role="ToRole_to_Footer"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_Footer">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_Footer">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_82FEBEF0340E0AB946A2A166A5E44ECF" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WRTY_TXTType" Multiplicity="1" Role="FromRole_assoc_82FEBEF0340E0AB946A2A166A5E44ECF"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_82FEBEF0340E0AB946A2A166A5E44ECF"/>
+            </Association>
+            <Association Name="assoc_9049EFABA7DA5A17CBE99387C271EE05" sap:content-version="1">
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WRTY_TXTType" Multiplicity="1" Role="FromRole_assoc_9049EFABA7DA5A17CBE99387C271EE05"/>
+                <End Type="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WRTY_TXTType" Multiplicity="0..1" Role="ToRole_assoc_9049EFABA7DA5A17CBE99387C271EE05"/>
+            </Association>
+            <EntityContainer Name="cds_xcgamxui_warrantymngmt_hdr_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
+                <EntitySet Name="SAP__Currencies" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__Currency" sap:content-version="1"/>
+                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__UnitOfMeasure" sap:content-version="1"/>
+                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" sap:content-version="1"/>
+                <EntitySet Name="SAP__FormatSet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFStandardSet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFStandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__CoverPageSet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__CoverPage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__SignatureSet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__Signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__HierarchySet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFHeaderSet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFFooterSet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFFooter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_xcgamxui_warrantymngmt_hdr.SAP__ValueHelp" sap:content-version="1"/>
+                <EntitySet Name="xCGAMxC_WARRANTYMANGEMENT_HDR" EntityType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="xCGAMxC_WRTY_TXT" EntityType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WRTY_TXTType" sap:creatable="false" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="xCGAMxI_BILL_WRT_LIST" EntityType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_BILL_WRT_LISTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xCGAMxI_SN_WRT_LIST" EntityType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_SN_WRT_LISTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xCGAMxI_WrtyStatus" EntityType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_WrtyStatusType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xCGAMxI_WRTY_COND_CAT" EntityType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_WRTY_COND_CATType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xCGDCxC_TJ30" EntityType="cds_xcgamxui_warrantymngmt_hdr.xCGDCxC_TJ30Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="cds_xcgamxui_warrantymngmt_hdr.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="I_DraftAdministrativeUserVH" EntityType="cds_xcgamxui_warrantymngmt_hdr.I_DraftAdministrativeUserVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_81AF5E496F2300478E2971EE92C9A722" Association="cds_xcgamxui_warrantymngmt_hdr.assoc_81AF5E496F2300478E2971EE92C9A722" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" Role="FromRole_assoc_81AF5E496F2300478E2971EE92C9A722"/>
+                    <End EntitySet="xCGAMxI_BILL_WRT_LIST" Role="ToRole_assoc_81AF5E496F2300478E2971EE92C9A722"/>
+                </AssociationSet>
+                <AssociationSet Name="to_FooterSet" Association="cds_xcgamxui_warrantymngmt_hdr.to_Footer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Footer"/>
+                    <End EntitySet="SAP__PDFFooterSet" Role="ToRole_to_Footer"/>
+                </AssociationSet>
+                <AssociationSet Name="to_headerSet" Association="cds_xcgamxui_warrantymngmt_hdr.to_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_header"/>
+                    <End EntitySet="SAP__PDFHeaderSet" Role="ToRole_to_header"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_595B901FAF1892E51EDB84BFAA5900D1" Association="cds_xcgamxui_warrantymngmt_hdr.assoc_595B901FAF1892E51EDB84BFAA5900D1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" Role="FromRole_assoc_595B901FAF1892E51EDB84BFAA5900D1"/>
+                    <End EntitySet="xCGAMxI_SN_WRT_LIST" Role="ToRole_assoc_595B901FAF1892E51EDB84BFAA5900D1"/>
+                </AssociationSet>
+                <AssociationSet Name="to_formatSet" Association="cds_xcgamxui_warrantymngmt_hdr.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/>
+                    <End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/>
+                </AssociationSet>
+                <AssociationSet Name="to_pdfstandardSet" Association="cds_xcgamxui_warrantymngmt_hdr.to_pdfstandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_pdfstandard"/>
+                    <End EntitySet="SAP__PDFStandardSet" Role="ToRole_to_pdfstandard"/>
+                </AssociationSet>
+                <AssociationSet Name="to_tablecolumnsSet" Association="cds_xcgamxui_warrantymngmt_hdr.to_tablecolumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/>
+                    <End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/>
+                </AssociationSet>
+                <AssociationSet Name="to_signatureSet" Association="cds_xcgamxui_warrantymngmt_hdr.to_signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/>
+                    <End EntitySet="SAP__SignatureSet" Role="ToRole_to_signature"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9049EFABA7DA5A17CBE99387C271EE05" Association="cds_xcgamxui_warrantymngmt_hdr.assoc_9049EFABA7DA5A17CBE99387C271EE05" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xCGAMxC_WRTY_TXT" Role="FromRole_assoc_9049EFABA7DA5A17CBE99387C271EE05"/>
+                    <End EntitySet="xCGAMxC_WRTY_TXT" Role="ToRole_assoc_9049EFABA7DA5A17CBE99387C271EE05"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_4CDD58330B3729F279F710BB3F6ADD49" Association="cds_xcgamxui_warrantymngmt_hdr.assoc_4CDD58330B3729F279F710BB3F6ADD49" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" Role="FromRole_assoc_4CDD58330B3729F279F710BB3F6ADD49"/>
+                    <End EntitySet="xCGAMxC_WRTY_TXT" Role="ToRole_assoc_4CDD58330B3729F279F710BB3F6ADD49"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7BB9752465669E0CC425B08E6D085C97" Association="cds_xcgamxui_warrantymngmt_hdr.assoc_7BB9752465669E0CC425B08E6D085C97" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" Role="FromRole_assoc_7BB9752465669E0CC425B08E6D085C97"/>
+                    <End EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" Role="ToRole_assoc_7BB9752465669E0CC425B08E6D085C97"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_82FEBEF0340E0AB946A2A166A5E44ECF" Association="cds_xcgamxui_warrantymngmt_hdr.assoc_82FEBEF0340E0AB946A2A166A5E44ECF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xCGAMxC_WRTY_TXT" Role="FromRole_assoc_82FEBEF0340E0AB946A2A166A5E44ECF"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_82FEBEF0340E0AB946A2A166A5E44ECF"/>
+                </AssociationSet>
+                <AssociationSet Name="to_coverpageSet" Association="cds_xcgamxui_warrantymngmt_hdr.to_coverpage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/>
+                    <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6AD4B874CA833EC25AD644B06921605E" Association="cds_xcgamxui_warrantymngmt_hdr.assoc_6AD4B874CA833EC25AD644B06921605E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" Role="FromRole_assoc_6AD4B874CA833EC25AD644B06921605E"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_6AD4B874CA833EC25AD644B06921605E"/>
+                </AssociationSet>
+                <AssociationSet Name="to_HierarchySet" Association="cds_xcgamxui_warrantymngmt_hdr.to_Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Hierarchy"/>
+                    <End EntitySet="SAP__HierarchySet" Role="ToRole_to_Hierarchy"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_FDE9ADE39C2AD8B556A38C1A9617B02B" Association="cds_xcgamxui_warrantymngmt_hdr.assoc_FDE9ADE39C2AD8B556A38C1A9617B02B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" Role="FromRole_assoc_FDE9ADE39C2AD8B556A38C1A9617B02B"/>
+                    <End EntitySet="xCGAMxI_WRTY_COND_CAT" Role="ToRole_assoc_FDE9ADE39C2AD8B556A38C1A9617B02B"/>
+                </AssociationSet>
+                <FunctionImport Name="xCGAMxC_WARRANTYMANGEMENT_HDRActivate" ReturnType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" m:HttpMethod="POST" sap:action-for="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType">
+                    <Parameter Name="wrty_no" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Master warranty"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="Crtd" ReturnType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" m:HttpMethod="POST" sap:action-for="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" sap:applicable-path="Crtd_ac">
+                    <Parameter Name="wrty_no" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Master warranty"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="Status" Type="Edm.String" Mode="In" MaxLength="5" Nullable="true" sap:value-list="fixed-values" sap:label="Status"/>
+                </FunctionImport>
+                <FunctionImport Name="xCGAMxC_WARRANTYMANGEMENT_HDRDiscard" ReturnType="cds_xcgamxui_warrantymngmt_hdr.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType">
+                    <Parameter Name="wrty_no" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Master warranty"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="xCGAMxC_WARRANTYMANGEMENT_HDREdit" ReturnType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" EntitySet="xCGAMxC_WARRANTYMANGEMENT_HDR" m:HttpMethod="POST" sap:action-for="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType" sap:applicable-path="Edit_ac">
+                    <Parameter Name="wrty_no" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Master warranty"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
+                </FunctionImport>
+                <FunctionImport Name="xCGAMxC_WARRANTYMANGEMENT_HDRPrepare" ReturnType="cds_xcgamxui_warrantymngmt_hdr.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType">
+                    <Parameter Name="wrty_no" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Master warranty"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="xCGAMxC_WARRANTYMANGEMENT_HDRResume" ReturnType="cds_xcgamxui_warrantymngmt_hdr.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType">
+                    <Parameter Name="wrty_no" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Master warranty"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="TextSave1" ReturnType="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WRTY_TXTType" EntitySet="xCGAMxC_WRTY_TXT" m:HttpMethod="POST" sap:action-for="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WRTY_TXTType" sap:applicable-path="TextSave1_ac">
+                    <Parameter Name="wrty_no" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Master warranty"/>
+                    <Parameter Name="Tdobject" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Text object"/>
+                    <Parameter Name="Txtob" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Group for"/>
+                    <Parameter Name="Txtgr" Type="Edm.String" Mode="In" MaxLength="2" sap:label="TextDetermProcedure"/>
+                    <Parameter Name="Tdid" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Text ID"/>
+                    <Parameter Name="Lfdtx" Type="Edm.String" Mode="In" MaxLength="3" sap:label="SeqNo-text ID group"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="longtext" Type="Edm.String" Mode="In" Nullable="true" sap:label="Text"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/xCGAMxC_WARRANTYMANGEMENT_HDR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/xCGAMxC_WARRANTYMANGEMENT_HDRActivate"/>
+                        <PropertyValue Property="DiscardAction" String="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/xCGAMxC_WARRANTYMANGEMENT_HDRDiscard"/>
+                        <PropertyValue Property="EditAction" String="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/xCGAMxC_WARRANTYMANGEMENT_HDREdit"/>
+                        <PropertyValue Property="PreparationAction" String="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/xCGAMxC_WARRANTYMANGEMENT_HDRPrepare"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Crtd_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>doc_type_fc</PropertyPath>
+                                <PropertyPath>wrty_edit_fc</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BILL"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_COND_CAT_OV"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SN"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_WRT_TEXT"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Crtd_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>doc_type_fc</PropertyPath>
+                                <PropertyPath>wrty_edit_fc</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/xCGAMxC_WRTY_TXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/xCGAMxC_WARRANTYMANGEMENT_HDR</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>TextSave1_ac</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>updateTxt1</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_wrtHDR"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>TextSave1_ac</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>updateTxt1</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.I_DraftAdministrativeDataType/CreatedByUser" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Draft Created By"/>
+                        <PropertyValue Property="CollectionPath" String="I_DraftAdministrativeUserVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreatedByUser"/>
+                                    <PropertyValue Property="ValueListProperty" String="UserID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.I_DraftAdministrativeDataType/LastChangedByUser" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Draft Last Changed By"/>
+                        <PropertyValue Property="CollectionPath" String="I_DraftAdministrativeUserVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastChangedByUser"/>
+                                    <PropertyValue Property="ValueListProperty" String="UserID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType/to_WRT_TEXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/I_DraftAdministrativeData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities/xCGAMxI_WRTY_COND_CAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>RecordCount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>RecordCount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType/doc_catg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.xCGAMxC_WARRANTYMANGEMENT_HDRType/wrty_type" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_BILL_WRT_LISTType/vbeln" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="BillingDocument"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.xCGAMxI_SN_WRT_LISTType/qmnum" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="ServiceNotification"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.cds_xcgamxui_warrantymngmt_hdr_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="./$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="SAP__MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.SAP__DocumentDescription">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__MyDocumentDescriptions"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__UnitOfMeasure/UnitCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+                <Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.AlternateKeys">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Key">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="Name" Path="ExternalCode"/>
+                                        <PropertyValue Property="Alias" String="ExternalCode"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription/CreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__DocumentDescription" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__capabilties.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Format/Orientation"/>
+                                    <PropertyValue Property="AllowedExpressions" String="Multivalue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Format/PaperSize"/>
+                                    <PropertyValue Property="AllowedExpressions" String="Multivalue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__Format/FitToPage/ErrorRecoveryBehavior" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="../../../../SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27ErrorRecoveryBehaviour%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__Format/FontName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__Format/PaperSize" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27PaperSize%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFHeader/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFHeader/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFHeader/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFFooter/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFFooter/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__PDFFooter/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__Format/Orientation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_xcgamxui_warrantymngmt_hdr.SAP__TableColumns/HorizontalAlignment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HorizontalAlignment%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <atom:link rel="self" href="https://xid-dev:8200/sap/opu/odata/cgam/UI_WARRANTYMNGMT_HDR/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://xid-dev:8200/sap/opu/odata/cgam/UI_WARRANTYMNGMT_HDR/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
