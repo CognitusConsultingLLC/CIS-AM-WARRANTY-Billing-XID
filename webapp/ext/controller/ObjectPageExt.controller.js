@@ -320,6 +320,10 @@ sap.ui.define([
 		},
 		onNavigateToPricingApp: function (oEvent) {
 			var oSelectedItem = oEvent.getSource().getParent().getParent().getSelectedItems();
+			if(oSelectedItem.length === 0){
+				sap.m.MessageToast.show("Please select Item");
+				return;
+			}
 			var oConditionTable = oSelectedItem[0].getBindingContext().getObject("ConditionTable");
 			var ConditionType = oSelectedItem[0].getBindingContext().getObject("ConditionType");
 			this.Vbeln = oEvent.getSource().getBindingContext().getObject().wrty_no;
@@ -345,8 +349,10 @@ sap.ui.define([
 					"Kotab": oConditionTable
 				}
 			})) || "";
-			var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
-			ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='" + this.Vbeln + "',cc_docno='')";
+			// var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
+			// ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='" + this.Vbeln + "',cc_docno='')";
+			var fixedURL = "#CGARAdvPricing-manage&/xCGARxI_CC_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
+			ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='"+this.Vbeln+"',ccnum='')";
 			// var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Kschl='" + ConditionType + "',Kotab='" +
 			// 	oConditionTable + "',Vbeln='',mganr='" + this.Vbeln + "')/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
 			// 	ConditionType + "',Kotab='" + oConditionTable + "',Vbeln='',mganr='" + this.Vbeln + "')";
