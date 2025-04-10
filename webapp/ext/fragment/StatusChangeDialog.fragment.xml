@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:l="sap.ui.layout" xmlns:t="sap.ui.table" xmlns:smartField="sap.ui.comp.smartfield" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar">
+	<Dialog title="{i18n>StatusChange}" class="sapUiContentPadding" horizontalScrolling="false" draggable="true">
+		<content>
+			<ComboBox id="idcombobox"
+				items="{
+					path: '/xCGAMxOBJECT_STATUS_VH'
+				}">
+				<core:Item key="{Estat}" text="{Txt30}" />
+			</ComboBox>
+		</content>
+		<buttons>
+			<Button text="{i18n>StatusChange}" press="onStatusChnageSaveDialog" type="Emphasized"/>
+			<Button text="{i18n>close}" press="onStatusChnagecloseDialog" type="Emphasized"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

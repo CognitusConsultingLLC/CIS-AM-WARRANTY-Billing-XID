@@ -16,7 +16,46 @@ sap.ui.define([
 	"use strict";
 
 	return sap.ui.controller("cgam.warrantymngmt.ext.controller.ObjectPageExt", {
-
+		onClickStatusChange : function(oEvent){
+			if (!this.StatusChangeDialog) {
+				this.StatusChangeDialog = sap.ui.xmlfragment("idStatusChange",
+					"cgam.warrantymngmt.ext.fragment.StatusChangeDialog",
+					this);
+				this.getView().addDependent(this.StatusChangeDialog);
+			}
+			this.StatusChangeDialog.open();
+		},
+		onStatusChnagecloseDialog : function(oEvent){
+			this.StatusChangeDialog.close();
+			this.StatusChangeDialog.destroy();
+			this.StatusChangeDialog ="";
+		},
+		onStatusChnageSaveDialog : function(oEvent){
+			let that = this;
+			let oResourceBundle =  this.getView().getModel("i18n").getResourceBundle();
+			var form = sap.ui.getCore().byId("idStatusChange--idcombobox");
+			var mParameters = {
+				"wrty_no": oEvent.getSource().getBindingContext().getObject().wrty_no,
+				"DraftUUID": oEvent.getSource().getBindingContext().getObject().DraftUUID,
+				"IsActiveEntity": oEvent.getSource().getBindingContext().getObject().IsActiveEntity,
+				"Status": form.getSelectedKey()
+			};
+			this.extensionAPI.invokeActions(
+					"/Crtd", [], mParameters)
+				.then(function (oData, Resp) {
+					that.StatusChangeDialog.close();
+					that.StatusChangeDialog.destroy();
+					that.StatusChangeDialog = "";
+				that.getStatusData(that.Objnr, that.Auart, that.statusProfile).then(() => {
+					that.onloadstatusProcess(that.statusProfile).catch(oError => {
+						console.log(oError)
+					})
+				}).catch(oError => {
+					console.log(oError)
+				})
+				
+				});
+		},
 		onInit: function () {
 			this.initializeJSONModel();
 			let that = this;
@@ -26,9 +65,9 @@ sap.ui.define([
 					let Vbeln = oEvent.context.getModel().getData(spath).wrty_no;
 					that.Objnr = oEvent.context.getModel().getData(spath).objnr;
 					that.CreatedBy = oEvent.context.getModel().getData(spath).created_by;
-					this.statusProfile = oEvent.context.getModel().getData(spath).Stsma;
-					this.Auart = oEvent.context.getModel().getData(spath).doc_type
-					this.Vbeln = oEvent.context.getModel().getData(spath).wrty_no;
+					that.Auart = oEvent.context.getModel().getData(spath).doc_type
+					that.Vbeln = oEvent.context.getModel().getData(spath).wrty_no;
+					that.statusProfile = oEvent.context.getModel().getData(spath).Stsma;
 					//		that.onDocumentflowProcess(Vbeln);
 					if(oEvent.context.getModel().getData(spath).customer){
 						that.getBusinesspartner(oEvent.context.getModel().getData(spath).customer).then((oCustomerData) => {
@@ -139,7 +178,7 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel();
 			this.getView().getModel("HeaderData").setProperty("/lanes", []);
 			this.getView().getModel("HeaderData").setProperty("/PNodes", []);
-			var oPath = '/xCGDCxC_TJ30';
+			var oPath = '/xCGAMxC_TJ30';
 			var filters = new Array();
 			var oFilter = new sap.ui.model.Filter("Stsma", sap.ui.model.FilterOperator.EQ, statusProfile);
 			filters.push(oFilter);
@@ -161,9 +200,9 @@ sap.ui.define([
 		},
 		setStatusData: function (data) {
 			var statusData = this.statusData;
-			if(statusData.length === 0){
-				return;
-			}
+			// if(statusData.length === 0){
+			// 	return;
+			// }
 			this.oProcessFlow = this.getView().byId("ProcessFlow");
 			var lanes = [];
 			var PNodes = [];
@@ -200,7 +239,7 @@ sap.ui.define([
 				if (aStatus[i].usnam) {
 					this.atexts[1] = aStatus[i].usnam;
 					text = aStatus[i].Txt30;
-					if (aStatus[i].Inact = 'X') {
+					if (aStatus[i].Inact === 'X') {
 						state = SuiteLibrary.ProcessFlowNodeState.Neutral;
 					} else {
 						state = SuiteLibrary.ProcessFlowNodeState.Positive;
@@ -226,7 +265,7 @@ sap.ui.define([
 					"position": i,
 				});
 			}
-			if (index == 0) {
+			if (index === 0) {
 				state = SuiteLibrary.ProcessFlowNodeState.Positive;
 				this.atexts[1] = this.CreatedBy;
 				PNodes.push({

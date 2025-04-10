@@ -184,6 +184,16 @@
                                       }
                                   }
                               }
+                          },
+                          "Header": {
+                            "Actions": {
+                              "StatusChange": {
+                                "id": "StatusChange",
+                                "text": "{@i18n>StatusChange}",
+                                "press": "onClickStatusChange",
+                                "requiresSelection": false
+                              }
+                            }
                           }
                       }
                   }
