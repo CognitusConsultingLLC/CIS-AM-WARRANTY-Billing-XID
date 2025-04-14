@@ -391,7 +391,7 @@ sap.ui.define([
 			// var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
 			// ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='" + this.Vbeln + "',cc_docno='')";
 			var fixedURL = "#CGARAdvPricing-manage&/xCGARxI_CC_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
-			ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='"+this.Vbeln+"',ccnum='')";
+			ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='',ccnum='"+this.Vbeln+"')";
 			// var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Kschl='" + ConditionType + "',Kotab='" +
 			// 	oConditionTable + "',Vbeln='',mganr='" + this.Vbeln + "')/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
 			// 	ConditionType + "',Kotab='" + oConditionTable + "',Vbeln='',mganr='" + this.Vbeln + "')";
