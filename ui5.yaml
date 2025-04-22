@@ -18,7 +18,7 @@ server:
         backend:
           - path: /sap
             url: http://xid-dev:8200
-            destination: SCC_XID_202_CBANDI
+            destination: XID-202-PP
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
