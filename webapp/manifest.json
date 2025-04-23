@@ -174,16 +174,6 @@
                       "xCGAMxC_WARRANTYMANGEMENT_HDR": {
                           "EntitySet": "xCGAMxC_WARRANTYMANGEMENT_HDR",
                           "Sections": {
-                              "Condition": {
-                                  "id": "Condition",
-                                  "Actions": {
-                                      "ActionxCGDCxC_ContractManagement_HDSections2": {
-                                          "id": "ActionxCGDCxC_ContractManagement_HDSections1button2",
-                                          "text": "{@i18n>ActionxCGDCxC_ContractManagement_HDSections2}",
-                                          "press": "onNavigateToPricingApp"
-                                      }
-                                  }
-                              }
                           },
                           "Header": {
                             "Actions": {

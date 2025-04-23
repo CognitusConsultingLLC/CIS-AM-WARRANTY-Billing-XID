@@ -89,6 +89,43 @@ sap.ui.define([
 			});
 
 		},
+		onBeforeRebindTableExtension: function (oEvent) { 
+			if(oEvent.getParameters().id === 'cgam.warrantymngmt::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGAMxC_WARRANTYMANGEMENT_HDR--Condition::Table'){
+				this.addBindingListener(oEvent.getParameters().bindingParams, "dataReceived", this._onBindingDataReceivedListener.bind(this));
+			}
+		},
+		addBindingListener: function (oBindingInfo, sEventName, fHandler) {
+
+			oBindingInfo.events = oBindingInfo.events || {};
+	
+			if (!oBindingInfo.events[sEventName]) {
+				oBindingInfo.events[sEventName] = fHandler;
+			} else {
+				// Wrap the event handler of the other party to add our handler.
+				var fOriginalHandler = oBindingInfo.events[sEventName];
+				oBindingInfo.events[sEventName] = function () {
+					fHandler.apply(this, arguments);
+					fOriginalHandler.apply(this, arguments);
+				};
+			}
+		},
+		_onBindingDataReceivedListener : function(oEvent){
+			var oItemTable  = sap.ui.getCore().byId(
+				"cgam.warrantymngmt::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGAMxC_WARRANTYMANGEMENT_HDR--Condition::responsiveTable");
+			this._setRowNavigation(oItemTable);
+		},
+		_setRowNavigation : function(oTable){
+			var that = this;
+			if (oTable !== undefined) {
+				var aItems = oTable.getItems();
+				aItems.forEach(function(oItem) {
+						oItem.setType("Navigation");
+						oItem.attachPress(function(oEvent){
+							that.onConditionItemPress(oEvent);
+						})
+				});
+			}
+		},
 		initializeJSONModel: async function () {
 			var json = new JSONModel();
 			this.getView().setModel(this.getOwnerComponent().getModel());
@@ -357,61 +394,71 @@ sap.ui.define([
 			}
 
 		},
-		onNavigateToPricingApp: function (oEvent) {
-			var oSelectedItem = oEvent.getSource().getParent().getParent().getSelectedItems();
-			if(oSelectedItem.length === 0){
-				sap.m.MessageToast.show("Please select Item");
-				return;
-			}
-			var oConditionTable = oSelectedItem[0].getBindingContext().getObject("ConditionTable");
-			var ConditionType = oSelectedItem[0].getBindingContext().getObject("ConditionType");
-			this.Vbeln = oEvent.getSource().getBindingContext().getObject().wrty_no;
-			this.Auart = oEvent.getSource().getBindingContext().getObject().doc_type;
-			var sPmprf = oEvent.getSource().getBindingContext().getObject().Pmprf;
-			var sSubct = oEvent.getSource().getParent().getParent().getSelectedItem().getBindingContext().getObject().SubCategory;
-			if (!this.Auart) {
-				this.Auart = oSelectedItem[0].getBindingContext().getObject("Pmprf");
-			}
-			var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
-			var sSemanticObject = "pricingmaintenance";
-			var sAction = "manage";
-
-			var sHash = (oCrossAppNavigator && oCrossAppNavigator.hrefForExternal({
-				target: {
-					semanticObject: sSemanticObject,
-					action: sAction
-				},
-				params: {
-					"Pmprf": this.Auart,
-					"Vbeln": this.Vbeln,
-					"Kschl": ConditionType,
-					"Kotab": oConditionTable
-				}
-			})) || "";
-			// var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
-			// ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='" + this.Vbeln + "',cc_docno='')";
+		onConditionItemPress : function(oEvent){
+			var oConditionTable = oEvent.getSource().getBindingContext().getObject().ConditionTable;
+			var ConditionType = oEvent.getSource().getBindingContext().getObject().ConditionType;				
+			this.Vbeln = this.getView().getBindingContext().getObject().wrty_no;
+			var sPmprf = this.getView().getBindingContext().getObject().Pmprf;
+			var sSubct = oEvent.getSource().getBindingContext().getObject().SubCategory;
 			var fixedURL = "#CGARAdvPricing-manage&/xCGARxI_CC_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
 			ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='',ccnum='"+this.Vbeln+"')";
-			// var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Kschl='" + ConditionType + "',Kotab='" +
-			// 	oConditionTable + "',Vbeln='',mganr='" + this.Vbeln + "')/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
-			// 	ConditionType + "',Kotab='" + oConditionTable + "',Vbeln='',mganr='" + this.Vbeln + "')";
 			window.location.href = window.location.href.split('#')[0] + fixedURL;
-
-			// oCrossAppNavigator.toExternal({
-			// 	target: {
-			// 		semanticObject: "pricingmaintenance",
-			// 		action: "manage"
-			// 	},
-			// 	params: {
-			// 		"Pmprf": this.Auart,
-			// 		"Vbeln": this.Vbeln,
-			// 		"Kschl": ConditionType,
-			// 		"Kotab": oConditionTable
-
-			// 	}
-			// });
-
 		},
+		// onNavigateToPricingApp: function (oEvent) {
+		// 	var oSelectedItem = oEvent.getSource().getParent().getParent().getSelectedItems();
+		// 	if(oSelectedItem.length === 0){
+		// 		sap.m.MessageToast.show("Please select Item");
+		// 		return;
+		// 	}
+		// 	var oConditionTable = oSelectedItem[0].getBindingContext().getObject("ConditionTable");
+		// 	var ConditionType = oSelectedItem[0].getBindingContext().getObject("ConditionType");
+		// 	this.Vbeln = oEvent.getSource().getBindingContext().getObject().wrty_no;
+		// 	this.Auart = oEvent.getSource().getBindingContext().getObject().doc_type;
+		// 	var sPmprf = oEvent.getSource().getBindingContext().getObject().Pmprf;
+		// 	var sSubct = oEvent.getSource().getParent().getParent().getSelectedItem().getBindingContext().getObject().SubCategory;
+		// 	if (!this.Auart) {
+		// 		this.Auart = oSelectedItem[0].getBindingContext().getObject("Pmprf");
+		// 	}
+		// 	var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+		// 	var sSemanticObject = "pricingmaintenance";
+		// 	var sAction = "manage";
+
+		// 	var sHash = (oCrossAppNavigator && oCrossAppNavigator.hrefForExternal({
+		// 		target: {
+		// 			semanticObject: sSemanticObject,
+		// 			action: sAction
+		// 		},
+		// 		params: {
+		// 			"Pmprf": this.Auart,
+		// 			"Vbeln": this.Vbeln,
+		// 			"Kschl": ConditionType,
+		// 			"Kotab": oConditionTable
+		// 		}
+		// 	})) || "";
+		// 	// var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
+		// 	// ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='" + this.Vbeln + "',cc_docno='')";
+		// 	var fixedURL = "#CGARAdvPricing-manage&/xCGARxI_CC_MAIN(Pmprf='" + sPmprf + "',Subct='"+sSubct+"',Counter=0)/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
+		// 	ConditionType + "',Kotab='" + oConditionTable + "',Subct='"+sSubct+"',Counter=0,Vbeln='',mganr='',ccnum='"+this.Vbeln+"')";
+		// 	// var fixedURL = "#pricingmaintenance-manage&/xCGDCxI_PRICING_MAIN(Pmprf='" + sPmprf + "',Kschl='" + ConditionType + "',Kotab='" +
+		// 	// 	oConditionTable + "',Vbeln='',mganr='" + this.Vbeln + "')/toCondCat(Pmprf='" + sPmprf + "',Kschl='" +
+		// 	// 	ConditionType + "',Kotab='" + oConditionTable + "',Vbeln='',mganr='" + this.Vbeln + "')";
+		// 	window.location.href = window.location.href.split('#')[0] + fixedURL;
+
+		// 	// oCrossAppNavigator.toExternal({
+		// 	// 	target: {
+		// 	// 		semanticObject: "pricingmaintenance",
+		// 	// 		action: "manage"
+		// 	// 	},
+		// 	// 	params: {
+		// 	// 		"Pmprf": this.Auart,
+		// 	// 		"Vbeln": this.Vbeln,
+		// 	// 		"Kschl": ConditionType,
+		// 	// 		"Kotab": oConditionTable
+
+		// 	// 	}
+		// 	// });
+
+		// },
 		showBusyIndicator: function () {
 			if (!this._busyIndicator) {
 				this._busyIndicator = new sap.m.BusyDialog({
